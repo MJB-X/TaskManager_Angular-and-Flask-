@@ -1,0 +1,30 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #5051F9;
+  --secondary-color: #131517;
+  --background-color: #000000;
+ 
+
+
+--black100: #000000; /* Pure black */
+--black90: #1a1a1a; /* Very dark gray (slightly lighter than black) */
+--black80: #333333; /* Charcoal (dark gray) */
+--black70: #4d4d4d; /* Slate gray (medium-dark gray) */
+--black60: #666666; /* Light gray (medium gray) */
+--black50: #808080; /* Gray (light gray) */
+--black40: #999999; /* Dark gray (slightly darker than gray) */
+--black30: #b3b3b3; /* Medium gray (medium-light gray) */
+--black20: #cccccc; /* Medium light gray (light gray) */
+--black10: #e6e6e6; /* Light light gray (slightly darker than gray) */
+
+
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

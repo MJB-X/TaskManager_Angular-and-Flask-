@@ -1,0 +1,7 @@
+.mat-list-item {
+    border-radius: 0 !important;
+  }
+
+.selected-menu-item{
+    border-left: solid rgb(10, 10, 146) 5px;
+}

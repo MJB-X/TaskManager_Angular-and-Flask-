@@ -1,0 +1,33 @@
+<div class="dashBoard_container">
+    <div class="title_cont">
+      <h2>Dashboard</h2>
+    </div>
+  
+    <div class="das_cont">
+      <div class="summary_cont">
+        <h2>Task Summary</h2>
+        <hr>
+        <div class="summary_card_cont">
+          <div class="summary_card">
+            <p class="count">{{ totalTasks }}</p>
+            <p class="state">Total Tasks</p>
+          </div>
+          <div class="summary_card pending">
+            <p class="count">{{ pendingTasks }}</p>
+            <p class="state">Pending Tasks</p>
+          </div>
+          <div class="summary_card completed">
+            <p class="count">{{ completedTasks }}</p>
+            <p class="state">Completed Tasks</p>
+          </div>
+        </div>
+      </div>
+      <div class="due_cont">
+        <h2>Task Due</h2>
+        <div class="due_list">
+          <p>No tasks due today!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,18 @@
+.event_main_container{
+    margin: 24px;
+    padding: 24px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    text-align: center;
+}
+.event_main_container h1{
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: bolder;
+}
+.event_main_container p{
+    font-size: 16px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    color: rgb(93, 93, 93);
+}

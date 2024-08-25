@@ -1,0 +1,73 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>Edit Task</h2>
+  <mat-dialog-content>
+    <form [formGroup]="taskForm" class="task-form">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Task Title</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="desc"></textarea>
+      </mat-form-field>
+    
+      <div class="flex-container">
+        <mat-form-field appearance="fill" class="half-width">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="Pending">Pending</mat-option>
+            <mat-option value="In Progress">In Progress</mat-option>
+            <mat-option value="Completed">Completed</mat-option>
+          </mat-select>
+          <mat-icon matSuffix>check_circle</mat-icon>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill" class="half-width">
+          <mat-label>Priority</mat-label>
+          <mat-select formControlName="priority">
+            <mat-option value="Critical">Critical</mat-option>
+            <mat-option value="High">High</mat-option>
+            <mat-option value="Normal">Normal</mat-option>
+            <mat-option value="Low">Low</mat-option>
+          </mat-select>
+          <mat-icon matSuffix>star</mat-icon>
+        </mat-form-field>
+      </div>
+    
+      <div class="flex-container">
+        <mat-form-field appearance="fill" class="half-width">
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill" class="half-width">
+          <mat-label>End Date</mat-label>
+          <input matInput [matDatepicker]="endPicker" formControlName="endDate">
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div formArrayName="subtasks" class="subtasks-section">
+        <div *ngFor="let subtask of subtasks.controls; let i = index" [formGroupName]="i" class="subtask-container">
+          <mat-checkbox formControlName="done"></mat-checkbox>
+          <mat-form-field appearance="fill" class="subtask-input">
+            <mat-label>Subtask</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <button mat-icon-button (click)="removeSubtask(i)" aria-label="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <button mat-raised-button color="primary" (click)="addSubtask()" class="add-subtask-btn">Add Subtask</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button color="primary" (click)="onSubmit()" [disabled]="!taskForm.valid">Save</button>
+  </mat-dialog-actions>
+</div>

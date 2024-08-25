@@ -1,0 +1,191 @@
+
+.task_page_cont{
+    height: calc(100vh - 120px);
+    padding: 8px;
+}
+
+
+.filter_container {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 0 20px;
+ 
+
+
+  }
+  
+  .filter_fields  {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Adds space between the filter fields */
+    flex-wrap: wrap;
+   
+  }
+  mat-form-field{
+ 
+    height: 70px;
+    padding-top: 20px;
+
+  }
+
+  .filter-field {
+    width: 200px; /* Ensures a consistent width for all filters */
+  }
+  
+  .full-width {
+    flex: 1; /* Makes the search field take up remaining space */
+  }
+  
+  .large-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    height: 48px; /* Ensures the button height matches the form fields */
+  }
+  
+.mat-toolbar {
+    height: 64px; /* Adjust as needed */
+  }
+  
+  .mat-form-field.compact {
+    font-size: 14px; /* Adjust font size */
+    line-height: 1;
+  }
+  
+  .mat-form-field.compact .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+  
+  .mat-form-field.compact .mat-form-field-infix {
+    padding: 0.25em 0;
+    border-top: 0.35em solid transparent;
+  }
+  
+  .mat-form-field.compact .mat-form-field-outline {
+    top: 0.5em;
+  }
+  
+  .mat-form-field.compact .mat-form-field-label {
+    top: 1.2em;
+  }
+  
+  .mat-form-field.compact.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(0.75);
+  }
+  .search_container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  mat-button-toggle-group {
+    margin-right: 16px;
+   
+  }
+  
+
+  .completed-task {
+    text-decoration: line-through;
+    color: grey; /* Optional: Change color to indicate completion */
+  }
+  .table-container {
+    position: relative; /* Ensure the container has a relative position */
+    max-height: calc(65vh); /* Adjust based on your table size */
+    overflow-y: auto; /* Add vertical scrollbars if the content exceeds the height */
+    overflow-x: hidden; /* Hide horizontal overflow */
+    border-radius: 8px; /* Adjust the radius as needed */
+    
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .mat-table {
+    width: 100%;
+  }
+  
+  .mat-header-row {
+    position: sticky;
+    top: 0; /* Ensure it sticks to the top */
+    background: #fff; /* Ensure a solid background to cover content below */
+    z-index: 10; /* Ensure it is above the table rows */
+  }
+  
+  .mat-header-cell {
+    position: relative; /* Required for sticky header to work properly */
+    z-index: 1; /* Ensure header cells are above table content */
+  }
+  
+  .status-chip, .priority-chip {
+    padding: 4px 8px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    font-size: 10px;
+    text-wrap: none;
+    text-transform: uppercase;
+  }
+  
+/* Status colors */
+.status-completed {
+    background-color: #00b706; /* Green */
+    color: #ffffff;
+  }
+  
+  .status-in-progress {
+    background-color: #00c8ad; /* Light Yellow */
+    color: #ffffff; /* Orange */
+  }
+  
+  .status-pending {
+    color: #ffffff; /* Yellow */
+   background-color: #F57F17;
+  }
+  
+  /* Priority colors */
+  .priority-critical {
+    background-color: #c9001e; /* Light Red */
+    color: #ffffff; /* Dark Red */
+  }
+  
+  .priority-high {
+    background-color: #FFCDD2; /* Pink */
+    color: #B71C1C; /* Dark Red */
+  }
+  
+  .priority-medium {
+    background-color: #FFF9C4; /* Light Yellow */
+    color: #F57F17; /* Orange */
+  }
+  
+  .priority-low {
+    background-color: #C8E6C9; /* Light Green */
+    color: #1B5E20; /* Dark Green */
+  }
+  
+  .priority-normal {
+    background-color: #E3F2FD; /* Light Blue */
+    color: #0277BD; /* Dark Blue */
+  }
+  
+  /* In your component's CSS file */
+  @media (max-width: 768px) {
+    .filter_container {
+      flex-direction: column;
+    }
+  
+    .filter_fields {
+      flex-direction: column;
+    }
+  
+    .filter-field {
+      width: 100%;
+    }
+  
+    .btn_add {
+      width: 100%;
+    }
+  }

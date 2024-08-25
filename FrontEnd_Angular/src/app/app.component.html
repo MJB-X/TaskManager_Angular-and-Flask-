@@ -1,0 +1,59 @@
+<mat-toolbar class="mat-elevation-z3">
+  <button mat-icon-button class="menu_button" (click)="toggleSidenav()" *ngIf="isLoggedIn">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="fill-remaining-space"></span>
+  <img src="./assets/check.png" class="logo" alt="">
+  <span class="title">{{ title }}</span>
+
+  <span class="example-spacer "></span>
+  <button mat-flat-button color="primary"  *ngIf="!isLoggedIn" (click)="openAuthDialog(true)">Login</button>
+</mat-toolbar>
+
+<ng-container *ngIf="isLoggedIn; else landingPage">
+  <mat-sidenav-container>
+    <mat-sidenav [opened]="isHandset() ? sidenavOpened() : !collapsed()" 
+                 [mode]="isHandset() ? 'over' : 'side'"
+                 [style.width]="sideNavWidth()"
+                 (closed)="closeSidenav()">
+      <app-custom-sidenav></app-custom-sidenav>    
+    </mat-sidenav>
+    <mat-sidenav-content [style.margin-left]="isHandset() ? '0' : sideNavWidth()">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>
+
+  <!-- Landing page -->
+  <ng-template #landingPage>
+    <div class="landing-page">
+      <div class="content-wrapper">
+        <div class="title-desc-container">
+          <h1 class="landing-title">Manage Your <span class="title-span">Tasks</span> with Ease</h1>
+          <p class="title-desc">
+            Welcome to Task Manager – your streamlined solution for organizing tasks efficiently. Whether you're managing daily to-dos, work projects, or personal goals, our user-friendly interface helps you stay on top of your priorities.
+          </p>
+        </div>
+        <button mat-raised-button color="primary" class="landing-page-button"(click)="openAuthDialog(false)">Get Started</button>
+      </div>
+      
+      <div class="feature-cards">
+        <mat-card  class="feature_card">
+          <mat-icon>add_task</mat-icon>
+          <h3>Easy Task Creation</h3>
+          <p>Quickly add and organize your tasks</p>
+        </mat-card>
+        <mat-card  class="feature_card">
+          <mat-icon>event</mat-icon>
+          <h3>Due Dates</h3>
+          <p>Set and track deadlines effortlessly</p>
+        </mat-card>
+        <mat-card  class="feature_card">
+          <mat-icon>category</mat-icon>
+          <h3>Categorization</h3>
+          <p>Group tasks by projects or categories</p>
+        </mat-card>
+      </div>
+    </div>
+  </ng-template>

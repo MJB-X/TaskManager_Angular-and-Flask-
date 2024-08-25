@@ -1,0 +1,78 @@
+.dialog-container {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.flex-container {
+  display: flex;
+  gap: 15px;
+}
+
+.half-width {
+  flex: 1;
+}
+
+.subtasks-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subtask-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.subtask-input {
+  flex-grow: 1;
+}
+
+.add-subtask-btn {
+  align-self: flex-start;
+}
+
+@media (max-width: 600px) {
+  .dialog-container {
+    padding: 10px;
+  }
+
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .half-width {
+    width: 100%;
+  }
+
+  .subtask-container {
+    flex-wrap: wrap;
+  }
+
+  .subtask-input {
+    flex-basis: 100%;
+    order: -1;
+  }
+
+  mat-dialog-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  mat-dialog-actions button {
+    margin-left: 0 !important;
+    margin-top: 10px;
+  }
+}
