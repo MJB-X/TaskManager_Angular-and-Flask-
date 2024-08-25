@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Auth successful');
-        // Navigate to dashboard or reload the page
+       
         this.isLoggedIn = true;
       }
     });

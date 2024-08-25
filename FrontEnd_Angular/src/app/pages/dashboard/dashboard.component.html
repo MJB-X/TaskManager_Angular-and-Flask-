@@ -1,33 +1,50 @@
-<div class="dashBoard_container">
-    <div class="title_cont">
-      <h2>Dashboard</h2>
-    </div>
-  
-    <div class="das_cont">
-      <div class="summary_cont">
+<div class="dashboard-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="title">Dashboard</mat-card-title>
+    </mat-card-header>
+   
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div class="summary-section">
         <h2>Task Summary</h2>
-        <hr>
-        <div class="summary_card_cont">
-          <div class="summary_card">
-            <p class="count">{{ totalTasks }}</p>
-            <p class="state">Total Tasks</p>
-          </div>
-          <div class="summary_card pending">
-            <p class="count">{{ pendingTasks }}</p>
-            <p class="state">Pending Tasks</p>
-          </div>
-          <div class="summary_card completed">
-            <p class="count">{{ completedTasks }}</p>
-            <p class="state">Completed Tasks</p>
-          </div>
+        <div class="summary-cards">
+          <mat-card class="summary-card">
+            <mat-card-content>
+              <h3>{{ totalTasks }}</h3>
+              <p>Total Tasks</p>
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="summary-card pending">
+            <mat-card-content>
+              <h3>{{ pendingTasks }}</h3>
+              <p>Pending Tasks</p>
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="summary-card completed">
+            <mat-card-content>
+              <h3>{{ completedTasks }}</h3>
+              <p>Completed Tasks</p>
+            </mat-card-content>
+          </mat-card>
         </div>
       </div>
-      <div class="due_cont">
-        <h2>Task Due</h2>
-        <div class="due_list">
+
+      <mat-divider></mat-divider>
+
+      <div class="due-tasks-section">
+        <h2>Tasks Due</h2>
+        <mat-list *ngIf="dueTasks.length > 0; else noDueTasks">
+          <mat-list-item *ngFor="let task of dueTasks">
+            <mat-icon matListItemIcon>event</mat-icon>
+            <div matListItemTitle>{{ task.title }}</div>
+            <div matListItemLine>Due in {{ task.daysUntilDue }} day(s)</div>
+          </mat-list-item>
+        </mat-list>
+        <ng-template #noDueTasks>
           <p>No tasks due today!</p>
-        </div>
+        </ng-template>
       </div>
-    </div>
-  </div>
-  
+    </mat-card-content>
+  </mat-card>
+</div>

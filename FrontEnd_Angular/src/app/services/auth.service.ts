@@ -27,7 +27,24 @@ export class AuthService {
         catchError(() => of(false))  // In case of error, return false
       );
   }
+    // New register method
+    register(username: string, password: string): Observable<boolean> {
+      console.log("Registration Triggered", username);
+      return this.http.post<{success: boolean, message: string}>(`${this.apiUrl}/register`, { username, password })
+        .pipe(
+          map(response => {
+            if (response && response.success) {
 
+              return true;
+            }
+            return false;
+          }),
+          catchError((error) => {
+            console.error('Registration error:', error);
+            return of(false);
+          })
+        );
+    }
   isLoggedIn(): boolean {
     return this.loggedIn || !!localStorage.getItem('token');
   }

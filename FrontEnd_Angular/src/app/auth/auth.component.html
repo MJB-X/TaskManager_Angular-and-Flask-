@@ -1,45 +1,45 @@
 <div class="auth-container">
-    <mat-card class="auth-card">
-      <mat-card-header>
-        <div class="logo-container">
-          <img src="assets/check.png" alt="Logo" class="logo">
-          <h1 class="title">Task Manager</h1>
+  <mat-card class="auth-card">
+    <mat-card-header>
+      <div class="logo-container">
+        <img src="assets/check.png" alt="Logo" class="logo">
+        <h1 class="title">Task Manager</h1>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <h2 class="auth-type">{{ isLoginMode ? 'Login' : 'Sign Up' }}</h2>
+      <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" required>
+          <mat-error *ngIf="authForm.get('username')?.invalid">Username is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" required>
+          <mat-error *ngIf="authForm.get('password')?.invalid">Password must be at least 6 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="!isLoginMode" appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput formControlName="confirmPassword" type="password" required>
+          <mat-error *ngIf="authForm.get('confirmPassword')?.hasError('mismatch')">Passwords do not match</mat-error>
+        </mat-form-field>
+
+        <div *ngIf="error" class="error-message">
+          {{ error }}
         </div>
-      </mat-card-header>
-      <mat-card-content>
-        <h2>{{ isLoginMode ? 'Login' : 'Sign Up' }}</h2>
-        <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
-          <mat-form-field appearance="outline">
-            <mat-label>Username</mat-label>
-            <input matInput formControlName="username" required>
-            <mat-error *ngIf="authForm.get('username')?.invalid">Username is required</mat-error>
-          </mat-form-field>
-  
-          <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password" required>
-            <mat-error *ngIf="authForm.get('password')?.invalid">Password must be at least 6 characters</mat-error>
-          </mat-form-field>
-  
-          <mat-form-field *ngIf="!isLoginMode" appearance="outline">
-            <mat-label>Confirm Password</mat-label>
-            <input matInput formControlName="confirmPassword" type="password" required>
-            <mat-error *ngIf="authForm.get('confirmPassword')?.hasError('mismatch')">Passwords do not match</mat-error>
-          </mat-form-field>
-  
-          <div *ngIf="error" class="error-message">
-            {{ error }}
-          </div>
-  
-          <button mat-raised-button color="primary" type="submit" [disabled]="authForm.invalid">
-            {{ isLoginMode ? 'Login' : 'Sign Up' }}
-          </button>
-        </form>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)="toggleMode()">
-          {{ isLoginMode ? 'Need an account? Sign up' : 'Already have an account? Login' }}
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="authForm.invalid" class="submit-button">
+          {{ isLoginMode ? 'Login' : 'Sign Up' }}
         </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="toggleMode()" class="toggle-mode-button">
+        {{ isLoginMode ? 'Need an account? Sign up' : 'Already have an account? Login' }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

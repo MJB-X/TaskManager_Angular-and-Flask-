@@ -38,7 +38,7 @@ export class TasksComponent {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  dayFilter: string = 'all';
+  dayFilter: string = 'today';
   statusFilter: string = 'all';
   
   constructor(private dialog: MatDialog,private breakpointObserver: BreakpointObserver, private taskService: ApiService, private snackBar: MatSnackBar) {
@@ -53,6 +53,7 @@ export class TasksComponent {
         console.log('Tasks data received:', tasksData);
         this.dataSource = new MatTableDataSource<Task>(tasksData);
         this.dataSource.filterPredicate = this.customFilterPredicate;
+        this.dataSource.sort = this.sort;
        // Debugging line
         
       },
@@ -76,8 +77,10 @@ export class TasksComponent {
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    
+   
     this.dataSource.paginator = this.paginator;
+    this.sort.sortChange.subscribe(() => (console.log('Sorter Trigerring')));
     this.dataSource.sortingDataAccessor = (item: Task, property: string): string | number => {
       switch(property) {
         case 'dateRange': return item.startDate.getTime(); // Convert Date to number
@@ -118,9 +121,22 @@ export class TasksComponent {
       tomorrow.setDate(tomorrow.getDate() + 1);
   
       if (day === 'today') {
-        matchesDay = data.startDate <= today && data.endDate >= today;
+        const today = new Date();
+        const startDate = new Date(data.startDate);
+        const endDate = new Date(data.endDate);
+      
+        console.log(today);
+        console.log("startDate", startDate);
+        matchesDay = startDate <= today && endDate >= today;
       } else if (day === 'tomorrow') {
-        matchesDay = data.startDate <= tomorrow && data.endDate >= tomorrow;
+        const today = new Date("2024-08-24T18:30:00");
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+      
+        const startDate = new Date(data.startDate);
+        const endDate = new Date(data.endDate);
+      
+        matchesDay = startDate <= tomorrow && endDate >= tomorrow;
       }
     }
   

@@ -1,5 +1,8 @@
 <div class="dialog-container">
-  <h2 mat-dialog-title>Edit Task</h2>
+  
+  <h2 mat-dialog-title *ngIf="isEditing; else addTask"  >Edit Task</h2>
+  <ng-template #addTask>
+    <h2 mat-dialog-title  >Add Task</h2> </ng-template>
   <mat-dialog-content>
     <form [formGroup]="taskForm" class="task-form">
       <mat-form-field appearance="fill" class="full-width">

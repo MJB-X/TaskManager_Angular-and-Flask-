@@ -66,3 +66,14 @@
     margin-bottom: 15px;
     text-align: center;
   }
+  @media (max-width: 600px) {
+    .auth-container {
+      padding: 0;
+    }
+  
+    .auth-card {
+      max-width: none;
+      height: 100vh;
+      border-radius: 0;
+    }
+  }
